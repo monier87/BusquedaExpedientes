@@ -14,7 +14,7 @@ function AppFooter() {
           <FaTwitter className='cursor-pointer' size={20} color='black' />
         </a>
         <a
-          href='https://github.com/'
+          href=''
           target='_blank'
           rel='noopener noreferrer'
           style={{ margin: '0 5px' }}
