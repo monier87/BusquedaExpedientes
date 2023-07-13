@@ -42,25 +42,37 @@ function SearchForm() {
           onChange={handleCategoryChange}
         >
           <Option value="all">Todas las categorías</Option>
-          <Option value="tipo">Tipo de Expediente</Option>
-          <Option value="numero">Número de Expediente</Option>
-          <Option value="estado">Estado de Expediente</Option>
+          <Option value="nombre">Nombre del documento</Option>
+          <Option value="seccion">Código de sección emisora</Option>
+          <Option value="tipo">Tipo de documento</Option>
+          <Option value="numRegistroEntrada">Número de registro entrada</Option>
+          <Option value="numRegistroSalida">Número de registro salida</Option>
+          <Option value="anio">Año</Option>
+          <Option value="expediente">Número de expediente</Option>
           {/* Agrega más opciones de categorías según tus necesidades */}
         </Select>
       </Space>
       {/* Agrega controles adicionales según las categorías seleccionadas */}
+      {searchCategory === "nombre" && (
+        <Input style={{ width: 300 }} placeholder="Ingrese el nombre del documento" />
+      )}
+      {searchCategory === "seccion" && (
+        <Input style={{ width: 180 }} placeholder="Ingrese el código de sección emisora" />
+      )}
       {searchCategory === "tipo" && (
-        <Select style={{ width: 180 }} placeholder="Seleccione el tipo de expediente">
-          {/* Agrega opciones de tipos de expediente */}
-        </Select>
+        <Input style={{ width: 180 }} placeholder="Ingrese el tipo de documento" />
       )}
-      {searchCategory === "numero" && (
+      {searchCategory === "numRegistroEntrada" && (
+        <Input style={{ width: 180 }} placeholder="Ingrese el número de registro entrada" />
+      )}
+      {searchCategory === "numRegistroSalida" && (
+        <Input style={{ width: 180 }} placeholder="Ingrese el número de registro salida" />
+      )}
+      {searchCategory === "anio" && (
+        <Input style={{ width: 180 }} placeholder="Ingrese el año" />
+      )}
+      {searchCategory === "expediente" && (
         <Input style={{ width: 180 }} placeholder="Ingrese el número de expediente" />
-      )}
-      {searchCategory === "estado" && (
-        <Select style={{ width: 180 }} placeholder="Seleccione el estado de expediente">
-          {/* Agrega opciones de estados de expediente */}
-        </Select>
       )}
 
       <Typography.Title level={4}>Búsqueda de Palabras Clave en Documentos PDF</Typography.Title>
