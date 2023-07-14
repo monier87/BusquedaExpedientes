@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space } from 'antd';
+import { Row, Col } from 'antd';
 import './App.css';
 import AppFooter from './components/AppFooter';
 import AppHeader from './components/AppHeader';
@@ -11,10 +11,14 @@ function App() {
   return (
     <div className='App'>
       <AppHeader />
-      <Space className='SideMenuAndPageContent'>
-        <SideMenu />
-        <PageContent />
-      </Space>
+      <Row className='SideMenuAndPageContent'>
+        <Col xs={24} sm={24} md={6} lg={6} xl={4}>
+          <SideMenu />
+        </Col>
+        <Col xs={24} sm={24} md={18} lg={18} xl={20}>
+          <PageContent />
+        </Col>
+      </Row>
       <AppFooter />
     </div>
   );

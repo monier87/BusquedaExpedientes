@@ -49,7 +49,7 @@ function SearchForm() {
           <Option value="numRegistroSalida">Número de registro salida</Option>
           <Option value="anio">Año</Option>
           <Option value="expediente">Número de expediente</Option>
-          {/* Agrega más opciones de categorías según tus necesidades */}
+          {/* Agrega más opciones de categorías según  necesidades */}
         </Select>
       </Space>
       {/* Agrega controles adicionales según las categorías seleccionadas */}
