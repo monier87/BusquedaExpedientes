@@ -1,6 +1,6 @@
 import React from 'react';
 import Menu from './Menu';
-import { AppstoreOutlined, ShopOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { SearchOutlined, UserOutlined, FolderOutlined, FileAddOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 function SideMenu() {
@@ -14,19 +14,19 @@ function SideMenu() {
                 }}
                 items={[
                     {
-                        label: "Dashboard",
+                        label: "Buscar Expedientes",
                         key: '/',
-                        icon: <AppstoreOutlined />
+                        icon: <SearchOutlined />
                     },
                     {
-                        label: "Configuracion",
+                        label: "Insertar Expedientes",
                         key: '/inventario',
-                        icon: <ShopOutlined />
+                        icon: <FileAddOutlined />
                     },
                     {
                         label: "Expedientes",
                         key: '/ordenes',
-                        icon: <ShoppingCartOutlined />
+                        icon: <FolderOutlined />
                     },
                     {
                         label: "Usuarios",

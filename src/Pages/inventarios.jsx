@@ -1,87 +1,88 @@
-import { useState } from "react";
-import { Input, Button, Space, Typography, Select, Checkbox } from "antd";
+import React, { useState } from 'react';
+import { Form, Input, Checkbox, DatePicker, Select, Row, Col, Button } from 'antd';
 
 const { Option } = Select;
 
-function SearchConfigurationPanel() {
-  const [searchCategory, setSearchCategory] = useState("all");
-  const [searchFilters, setSearchFilters] = useState({
-    tipo: false,
-    numero: false,
-    estado: false,
-    fechaEntrada: false,
-    fechaPagado: false,
-    beneficiario: false,
-    numeroCheque: false,
-    numeroProyecto: false,
-    ubicacionArchivo: false,
-    keywords: false,
-  });
+function ExpedienteForm() {
+  const [form] = Form.useForm();
+  const [isPropietario, setIsPropietario] = useState(false);
 
-  const handleCategoryChange = (value) => {
-    setSearchCategory(value);
+  const handlePropietarioChange = (e) => {
+    setIsPropietario(e.target.checked);
   };
 
-  const handleFilterChange = (filterName, checked) => {
-    setSearchFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterName]: checked,
-    }));
+  const handleSave = () => {
+    form.validateFields().then((values) => {
+      console.log('Valores del formulario:', values);
+      // Aquí puedes realizar acciones adicionales, como enviar los datos a un servidor
+    });
   };
 
-  const handleSubmit = () => {
-    // Aquí puedes realizar acciones basadas en los filtros y configuraciones seleccionados, como enviar una solicitud de búsqueda
-    // o actualizar la configuración en el servidor
-    console.log("Categoría seleccionada:", searchCategory);
-    console.log("Filtros seleccionados:", searchFilters);
+  const handleCancel = () => {
+    form.resetFields();
+    setIsPropietario(false);
   };
 
   return (
-    <Space direction="vertical">
-      <Typography.Title level={4}>Panel de Configuración de Búsqueda</Typography.Title>
-      <Select
-        defaultValue="all"
-        style={{ width: 180 }}
-        onChange={handleCategoryChange}
-      >
-        <Option value="all">Todas las categorías</Option>
-        <Option value="tipo">Tipo de Expediente</Option>
-        <Option value="numero">Número de Expediente</Option>
-        <Option value="estado">Estado de Expediente</Option>
-        {/* Agrega más opciones de categorías según tus necesidades */}
-      </Select>
-      <Typography.Title level={5}>Filtros</Typography.Title>
-      <Checkbox
-        checked={searchFilters.tipo}
-        onChange={(e) => handleFilterChange("tipo", e.target.checked)}
-      >
-        Tipo de Expediente
-      </Checkbox>
-      <Checkbox
-        checked={searchFilters.numero}
-        onChange={(e) => handleFilterChange("numero", e.target.checked)}
-      >
-        Número de Expediente
-      </Checkbox>
-      <Checkbox
-        checked={searchFilters.estado}
-        onChange={(e) => handleFilterChange("estado", e.target.checked)}
-      >
-        Estado de Expediente
-      </Checkbox>
-      {/* Agrega más opciones de filtros según tus necesidades */}
-      <Typography.Title level={5}>Palabras Clave</Typography.Title>
-      <Checkbox
-        checked={searchFilters.keywords}
-        onChange={(e) => handleFilterChange("keywords", e.target.checked)}
-      >
-        Buscar palabras clave dentro de los archivos PDF
-      </Checkbox>
-      <Button type="primary" onClick={handleSubmit}>
-        Aplicar Configuración
-      </Button>
-    </Space>
+    <div>
+      <Form form={form} layout="vertical">
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item label="Propietario">
+              <Checkbox onChange={handlePropietarioChange}>Marcar como propietario</Checkbox>
+            </Form.Item>
+            <Form.Item label="Fecha" name="fecha">
+              <DatePicker style={{ width: '100%' }} />
+            </Form.Item>
+            <Form.Item label="Tipo de Expediente" name="tipoExpediente">
+              <Select>
+                <Option value="tipoA">Tipo A</Option>
+                <Option value="tipoB">Tipo B</Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label="Resumen" name="resumen">
+              <Input.TextArea rows={4} />
+            </Form.Item>
+            <Form.Item label="Destinatario" name="destinatario">
+              <Input />
+            </Form.Item>
+            <Form.Item label="Ubicación del Archivo" name="ubicacionArchivo">
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item label="Fecha" name="fechaRegistro">
+              <DatePicker style={{ width: '100%' }} />
+            </Form.Item>
+            <Form.Item label="Entidad" name="entidad">
+              <Input />
+            </Form.Item>
+            <Form.Item label="Departamento" name="departamento">
+              <Input />
+            </Form.Item>
+            <Form.Item label="Registro" name="registro">
+              <Input />
+            </Form.Item>
+            <Form.Item label="Descripción" name="descripcion">
+              <Input.TextArea rows={4} />
+            </Form.Item>
+            <Form.Item label="Observaciones" name="observaciones">
+              <Input.TextArea rows={4} />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Form.Item label="Adjuntar archivo PDF" name="archivoPdf">
+          <Input type="file" />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" onClick={handleSave}>
+            Guardar
+          </Button>
+          <Button onClick={handleCancel}>Cancelar</Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 }
 
-export default SearchConfigurationPanel;
+export default ExpedienteForm;

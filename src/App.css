@@ -14,6 +14,17 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+.AppHeader .title-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.AppHeader .title-container img {
+    margin-right: 8px;
+    /* Ajusta el margen según sea necesario */
+}
+
 .AppFooter {
     height: 50px;
     display: flex;
@@ -27,12 +38,9 @@
     flex: 1;
     justify-content: flex-start;
     align-items: flex-start;
-
 }
 
-.SideMenu {
-
-}
+.SideMenu {}
 
 .PageContent {
     padding-left: 12px;

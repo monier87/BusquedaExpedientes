@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Dashboard from '../Pages/dashboard'
 import Inventarios from '../Pages/inventarios'
-import Ordenes from '../Pages/ordenes'
+import Ordenes from '../Pages/expedientes'
 import Usuarios from '../Pages/usuarios'
 
 

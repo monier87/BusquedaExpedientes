@@ -1,22 +1,18 @@
 import React from 'react';
-import { MailOutlined, BellFilled } from "@ant-design/icons";
+import { Typography } from 'antd';
 import footerImage from '../assets/footer.jpg';
-import { Space, Typography, Badge } from 'antd';
 
 function AppHeader() {
   return (
-    <div className='AppHeader'>
-      <img width={40} src={footerImage} alt='Footer' />
-      <div className='title-container'>
-        <Typography.Title level={3} style={{ marginBottom: 0 }}>SISTEMA DE GESTIÓN DE ARCHIVÍSTICA</Typography.Title>
+    <div className='AppHeader' style={{ backgroundColor: '#E6F7FF', display: 'flex', alignItems: 'center', padding: '12px' }}>
+      <div style={{ marginRight: '16px' }}>
+        <img width={40} src={footerImage} alt='Footer' />
       </div>
-      <Space className='icons-container'>
-        <Badge count={20} dot>
-          <MailOutlined style={{ fontSize: 24 }} />
-        </Badge>
-      </Space>
+      <div style={{ flex: 1 }}>
+        <Typography.Title level={3} style={{ marginBottom: 0, textAlign: 'center' }}>SISTEMA DE GESTIÓN DE ARCHIVÍSTICA</Typography.Title>
+      </div>
     </div>
   );
-};
+}
 
 export default AppHeader;
