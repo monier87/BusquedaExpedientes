@@ -8,7 +8,7 @@ function AppHeader() {
     <div className='AppHeader'>
       <img width={40} src={footerImage} alt='Footer' />
       <div className='title-container'>
-        <Typography.Title level={3} style={{ marginBottom: 0 }}>SISTEMA DE BUSQUEDA DE EXPEDIENTES</Typography.Title>
+        <Typography.Title level={3} style={{ marginBottom: 0 }}>SISTEMA DE GESTIÓN DE ARCHIVÍSTICA</Typography.Title>
       </div>
       <Space className='icons-container'>
         <Badge count={20} dot>
